@@ -1,6 +1,7 @@
 package com.goffity.demo.restfulbestpractices.services;
 
 import com.goffity.demo.restfulbestpractices.controllers.UsersController;
+import com.goffity.demo.restfulbestpractices.model.Devices;
 import com.goffity.demo.restfulbestpractices.model.Users;
 
 import org.apache.commons.logging.Log;
@@ -23,8 +24,14 @@ public class UsersServices {
         Link link = ControllerLinkBuilder.linkTo(UsersController.class).slash(users.getUserId()).withSelfRel();
         users.add(link);
 
-        users.add();
         Users users1 = new Users(2, "Goffity", "Bangkok");
+        Link link1 = ControllerLinkBuilder.linkTo(UsersController.class).slash(users1.getUserId()).withSelfRel();
+
+        Devices devices = new Devices(1, "mobile", 1);
+        Link deviceLink = new Link("https://localhost:8080/devices/api/v1/1");
+        devices.add(deviceLink);
+        users.setDevices(devices);
+        users1.add(link1);
 
         return Arrays.asList(users, users1);
     }

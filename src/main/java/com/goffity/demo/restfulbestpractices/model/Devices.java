@@ -7,6 +7,12 @@ public class Devices extends ResourceSupport {
     private String name;
     private int type;
 
+    public Devices(int deviceId, String name, int type) {
+        this.deviceId = deviceId;
+        this.name = name;
+        this.type = type;
+    }
+
     public int getDeviceId() {
         return deviceId;
     }
